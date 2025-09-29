@@ -9,7 +9,14 @@ function App() {
 
   return (
     <>
-      <PostsList />
+      <header className="bg-primary text-white py-3">
+        <div className="container">
+          <h1 className="h3 m-0">Lista de Publicaciones</h1>
+        </div>
+      </header>
+      <main className="container my-4">
+        <PostsList />
+      </main>
     </>
   )
 }

@@ -17,19 +17,37 @@ export default function PostsList() {
 
 
 
-    if (loading) {return <div>Loading...</div>}
-    if (posts.length === 0) {return <div>No posts found</div>}
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center py-5">
+                <div className="spinner-border text-primary me-2" role="status" aria-hidden="true"></div>
+                <span className="fw-medium">Cargando publicaciones...</span>
+            </div>
+        )
+    }
+    if (posts.length === 0) {
+        return (
+            <div className="alert alert-warning" role="alert">
+                No se encontraron publicaciones.
+            </div>
+        )
+    }
     
     return (
-        <div>
-            {
-                 posts.slice(0, 10).map(post => (
-                    <div key={post.id}>
-                        <h2>{post.title}</h2>
-                        <p>{post.body}</p>
+        <div className="row g-4">
+            {posts.slice(0, 10).map((post) => (
+                <div className="col-12 col-md-6 col-lg-4" key={post.id}>
+                    <div className="card h-100 shadow-sm">
+                        <div className="card-body">
+                            <h5 className="card-title text-capitalize">{post.title}</h5>
+                            <p className="card-text">{post.body}</p>
+                        </div>
+                        <div className="card-footer bg-transparent border-0 pt-0">
+                            <a href="#" className="btn btn-sm btn-outline-primary">Leer más</a>
+                        </div>
                     </div>
-                ))
-            }
+                </div>
+            ))}
         </div>
     )
 }
